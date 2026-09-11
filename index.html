@@ -13,7 +13,7 @@
   <!-- HEADER INDIKATOR -->
   <header class="header">
     <h1>TOILET INSPECTION</h1>
-    <div id="connection-status" class="status-badge offline">🔴 OFFLINE</div>
+    <div id="connection-status" class="status-badge offline">🔴 Offline</div>
   </header>
 
   <main class="container">
@@ -21,12 +21,12 @@
     <!-- BANNER PENDING DATA -->
     <div class="pending-banner">
       <span id="pending-count">💾 Tersimpan: 0 data</span>
-      <button id="btn-submit" class="btn-sync" onclick="syncData()">☁️ SUBMIT</button>
+      <button id="btn-submit" class="btn-sync" onclick="syncData()">☁️ Submit </button>
     </div>
 
     <!-- SCANNER SECTION -->
     <section class="card">
-      <button id="btn-scan" class="btn-primary" onclick="startScanner()">📷 SCAN BARCODE</button>
+      <button id="btn-scan" class="btn-primary" onclick="startScanner()">📷 Scan Barcode </button>
       <div id="qr-reader" class="scanner-container hidden"></div>
       
       <div id="location-info" class="location-box hidden">
@@ -106,7 +106,7 @@
       </section>
 
       <!-- ACTION BUTTON -->
-      <button type="submit" class="btn-save">💾 SIMPAN (LOCAL)</button>
+      <button type="submit" class="btn-save">💾 Save (Local)</button>
     </form>
 
   </main>
@@ -114,8 +114,8 @@
   <!-- MODAL PROGRESS SYNC -->
   <div id="sync-modal" class="modal hidden">
     <div class="modal-content">
-      <h3>Sinkronisasi Data</h3>
-      <p id="sync-status-text">⏳ Memulai sinkronisasi...</p>
+      <h3>Data Synchronization</h3>
+      <p id="sync-status-text">⏳ Synchronization...</p>
       <progress id="sync-progress" value="0" max="100"></progress>
     </div>
   </div>
