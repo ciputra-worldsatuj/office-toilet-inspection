@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Toilet Inspection PWA</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+
+  <!-- HEADER INDIKATOR -->
+  <header class="header">
+    <h1>TOILET INSPECTION</h1>
+    <div id="connection-status" class="status-badge offline">🔴 OFFLINE</div>
+  </header>
+
+  <main class="container">
+    
+    <!-- BANNER PENDING DATA -->
+    <div class="pending-banner">
+      <span id="pending-count">💾 Tersimpan: 0 data</span>
+      <button id="btn-submit" class="btn-sync" onclick="syncData()">☁️ SUBMIT</button>
+    </div>
+
+    <!-- SCANNER SECTION -->
+    <section class="card">
+      <button id="btn-scan" class="btn-primary" onclick="startScanner()">📷 SCAN BARCODE</button>
+      <div id="qr-reader" class="scanner-container hidden"></div>
+      
+      <div id="location-info" class="location-box hidden">
+        <div><strong>Lantai:</strong> <span id="lbl-lantai">-</span></div>
+        <div><strong>Jenis Toilet:</strong> <span id="lbl-jenis">-</span></div>
+      </div>
+      <div id="scan-error" class="alert-error hidden">❌ Barcode tidak terdaftar</div>
+    </section>
+
+    <!-- INSPECTION FORM (Hidden until QR scanned) -->
+    <form id="inspection-form" class="hidden" onsubmit="saveOffline(event)">
+      
+      <!-- PETUGAS & SHIFT -->
+      <section class="card">
+        <h3>📋 Identitas Inspection</h3>
+        
+        <div class="form-group">
+          <label>Nama Petugas *</label>
+          <input type="text" id="nama_petugas" required placeholder="Masukkan nama petugas">
+        </div>
+
+        <div class="form-group">
+          <label>Nama Leader *</label>
+          <select id="nama_leader" required>
+            <option value="">-- Pilih Leader --</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Shift *</label>
+          <select id="shift" required>
+            <option value="Shift 1">Shift 1</option>
+            <option value="Shift 2">Shift 2</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Rentang Jam *</label>
+          <select id="rentang_jam" required>
+            <option value="06.00 - 08.00">06.00 - 08.00</option>
+            <option value="08.00 - 09.00">08.00 - 09.00</option>
+            <option value="09.00 - 10.00">09.00 - 10.00</option>
+            <option value="10.00 - 11.00">10.00 - 11.00</option>
+            <option value="11.00 - 12.00">11.00 - 12.00</option>
+            <option value="12.00 - 13.00">12.00 - 13.00</option>
+            <option value="13.00 - 14.00">13.00 - 14.00</option>
+            <option value="14.00 - 15.00">14.00 - 15.00</option>
+            <option value="15.00 - 16.00">15.00 - 16.00</option>
+            <option value="16.00 - 17.00">16.00 - 17.00</option>
+            <option value="17.00 - 18.00">17.00 - 18.00</option>
+            <option value="18.00 - 19.00">18.00 - 19.00</option>
+            <option value="19.00 - 20.00">19.00 - 20.00</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- CHECKLIST TOGGLES -->
+      <section class="card">
+        <h3>🧹 Checklist Kebersihan & Facility</h3>
+        <div id="checklist-container">
+          <!-- Generated via JS dynamically -->
+        </div>
+      </section>
+
+      <!-- ISSUE & EVIDENCE -->
+      <section class="card">
+        <h3>⚠️ Catatan & Foto Masalah</h3>
+        <div class="form-group">
+          <label>Catatan Temuan / Problem</label>
+          <textarea id="catatan" rows="3" placeholder="Tuliskan catatan kondisi jika ada yang kotor/rusak..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Foto Evidence (Jika ada masalah)</label>
+          <input type="file" id="foto_file" accept="image/*" capture="environment">
+        </div>
+      </section>
+
+      <!-- ACTION BUTTON -->
+      <button type="submit" class="btn-save">💾 SIMPAN (LOCAL)</button>
+    </form>
+
+  </main>
+
+  <!-- MODAL PROGRESS SYNC -->
+  <div id="sync-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Sinkronisasi Data</h3>
+      <p id="sync-status-text">⏳ Memulai sinkronisasi...</p>
+      <progress id="sync-progress" value="0" max="100"></progress>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

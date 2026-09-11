@@ -1,0 +1,43 @@
+* { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+body { background-color: #f4f6f8; color: #333; padding-bottom: 40px; }
+
+.header { background: #0284c7; color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.header h1 { font-size: 1.1rem; letter-spacing: 0.5px; }
+
+.status-badge { display: inline-block; margin-top: 5px; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
+.status-badge.online { background-color: #16a34a; color: white; }
+.status-badge.offline { background-color: #dc2626; color: white; }
+
+.container { padding: 15px; max-width: 500px; margin: 0 auto; }
+
+.pending-banner { background: white; padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.btn-sync { background: #0284c7; color: white; border: none; padding: 8px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+
+.card { background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.card h3 { font-size: 1rem; color: #0284c7; margin-bottom: 12px; border-bottom: 2px solid #e0f2fe; padding-bottom: 5px; }
+
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; color: #475569; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; }
+
+.btn-primary { width: 100%; background: #0284c7; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; }
+.btn-save { width: 100%; background: #16a34a; color: white; border: none; padding: 15px; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+.scanner-container { margin-top: 15px; width: 100%; }
+.location-box { background: #e0f2fe; border-left: 4px solid #0284c7; padding: 10px; margin-top: 10px; font-size: 0.95rem; }
+.alert-error { background: #fee2e2; color: #991b1b; padding: 10px; border-radius: 6px; margin-top: 10px; text-align: center; font-weight: bold; }
+
+/* TOGGLE SWITCHES RED / GREEN */
+.toggle-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+.toggle-label { font-size: 0.9rem; font-weight: bold; color: #334155; }
+.switch-group { display: flex; gap: 5px; }
+.switch-btn { border: 1px solid #cbd5e1; background: #f8fafc; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; color: #64748b; }
+.switch-btn.active-green { background: #22c55e; color: white; border-color: #16a34a; }
+.switch-btn.active-red { background: #ef4444; color: white; border-color: #dc2626; }
+
+.hidden { display: none !important; }
+
+/* MODAL */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: white; padding: 25px; border-radius: 8px; width: 85%; max-width: 400px; text-align: center; }
+progress { width: 100%; height: 20px; margin-top: 15px; }
