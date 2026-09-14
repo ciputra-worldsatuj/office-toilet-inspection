@@ -75,10 +75,10 @@ async function fetchLeaders() {
   // Hardcoded Fallback
   select.innerHTML = `
     <option value="">-- Pilih Leader --</option>
-    <option value="Nama Leader 1">Ade</option>
-    <option value="Nama Leader 2">Rowinah</option>
-    <option value="Nama Leader 3">Fikri</option>
-    <option value="Nama Leader 4">Hendra</option>
+    <option value="Ade">Ade</option>
+    <option value="Rowinah">Rowinah</option>
+    <option value="Fikri">Fikri</option>
+    <option value="Hendra">Hendra</option>
   `;
 }
 
